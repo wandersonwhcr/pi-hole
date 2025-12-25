@@ -13,7 +13,10 @@ mkfs.ext4 -L var /dev/mmcblk0p2
 ```
 
 ```
-tar cvpzf pi-hole.apkovl.tar.gz --directory apkovl .
+tar cvpzf localhost.apkovl.tar.gz --directory apkovl .
+udisksctl mount -b /dev/mmcblk0p1
+cp localhost.apkovl.tar.gz /media/$USER/PIBOOT/
+udisksctl unmount -b /dev/mmcblk0p1
 ```
 
 ## Referências
