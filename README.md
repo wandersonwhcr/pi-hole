@@ -13,8 +13,8 @@ mkfs.ext4 -L var /dev/mmcblk0p2
 ```
 
 ```
-tar cvpzf localhost.apkovl.tar.gz --directory apkovl .
 udisksctl mount -b /dev/mmcblk0p1
+tar cvpzf localhost.apkovl.tar.gz --directory apkovl .
 cp localhost.apkovl.tar.gz /media/$USER/PIBOOT/
 udisksctl unmount -b /dev/mmcblk0p1
 ```
