@@ -12,6 +12,10 @@ echo ", +" | sfdisk /dev/mmcblk0 --append
 mkfs.ext4 -L var /dev/mmcblk0p2
 ```
 
+```
+tar cvpzf pi-hole.apkovl.tar.gz --directory apkovl .
+```
+
 ## Referências
 
 * [Alpine Linux: Downloads](https://alpinelinux.org/downloads/)

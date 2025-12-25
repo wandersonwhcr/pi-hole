@@ -1,0 +1,2 @@
+/dev/mmcblk0p1 /media/mmcblk0p1 vfat defaults,ro 0 0
+/dev/mmcblk0p2 /var             ext4 defaults,   0 2
