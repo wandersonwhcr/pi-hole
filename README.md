@@ -34,9 +34,14 @@ apk add \
     podman-compose \
     vim
 
+rc-service wpa_supplicant stop
+rc-update del wpa_supplicant boot
+
 rc-update add cgroups
 rc-service cgroups start
 
-rc-service wpa_supplicant stop
-rc-update del wpa_supplicant boot
+rc-update add podman
+rc-service podman start
+
+git clone https://github.com/wandersonwhcr/pi-hole
 ```
