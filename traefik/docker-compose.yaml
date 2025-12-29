@@ -2,7 +2,7 @@ services:
   traefik:
     labels:
       - traefik.enable=true
-      - traefik.http.routers.traefik.rule=Host(`pi-hole.home`)
+      - traefik.http.routers.traefik.rule=Host(`traefik.pi-hole.home`)
       - traefik.http.services.traefik.loadbalancer.server.port=8080
     image: traefik:v3.6.5
     restart: always
