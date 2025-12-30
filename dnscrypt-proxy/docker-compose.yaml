@@ -1,5 +1,6 @@
 services:
   dnscrypt-proxy:
+    restart: always
     build:
       context: .
     entrypoint:
