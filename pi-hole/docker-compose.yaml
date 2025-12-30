@@ -44,7 +44,7 @@ services:
     restart: always
     volumes:
       - ./docker/dnscrypt-proxy/dnscrypt-proxy.toml:/etc/dnscrypt-proxy/dnscrypt-proxy.toml
-    network_mode: service:pi-hole
+    network_mode: service:pihole
 
 volumes:
   pihole:
