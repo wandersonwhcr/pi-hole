@@ -1,2 +1,21 @@
 listen_addresses = ["0.0.0.0:53"]
+
+ipv4_servers = true
+doh_servers = true
+require_dnssec = true
+require_nolog = true
+require_nofilter = true
+
+bootstrap_resolvers = ["1.1.1.1:53"]
+
+block_ipv6 = true
+
+cache = false
+
+[sources.public-resolvers]
+urls = [
+  'https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md',
+  'https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md',
+]
+
 server_names = ["cloudflare-security"]
