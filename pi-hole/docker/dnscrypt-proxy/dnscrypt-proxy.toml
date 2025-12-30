@@ -12,7 +12,7 @@ block_ipv6 = true
 
 cache = false
 
-server_names = ["cloudflare-security"]
+server_names = ["cloudflare"]
 
 [sources.public-resolvers]
 urls = [
@@ -33,7 +33,7 @@ username = ""
 password = ""
 
 enable_query_log = true
-max_query_log_entries = 100
+privacy_level = 1
 
 prometheus_enabled = true
 prometheus_path = "/metrics"
