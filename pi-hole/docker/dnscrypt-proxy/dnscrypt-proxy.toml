@@ -28,6 +28,12 @@ prefix = ''
 
 enabled = true
 listen_address = "0.0.0.0:8080"
-enable_query_log = true
+
 username = ""
 password = ""
+
+enable_query_log = true
+max_query_log_entries = 100
+
+prometheus_enabled = true
+prometheus_path = "/metrics"
