@@ -33,7 +33,6 @@ services:
     ports:
       - 192.168.0.2:53:53/tcp
       - 192.168.0.2:53:53/udp
-      - 67:67/udp
     volumes:
       - pihole:/etc/pihole
     networks:
