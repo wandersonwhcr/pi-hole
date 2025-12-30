@@ -1,4 +1,4 @@
-listen_addresses = ["0.0.0.0:53"]
+listen_addresses = ["0.0.0.0:5353"]
 
 ipv4_servers = true
 doh_servers = true
