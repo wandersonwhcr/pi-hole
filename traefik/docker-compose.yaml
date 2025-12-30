@@ -8,13 +8,18 @@ services:
     restart: always
     command:
       - --api.insecure=true
-      - --entrypoints.web.address=:80
       - --log.level=INFO
+      - --entrypoints.web.address=:80
+      - --entrypoints.web.http.redirections.entryPoint.to=websecure
+      - --entrypoints.web.http.redirections.entryPoint.scheme=https
+      - --entrypoints.websecure.address=:443
+      - --entrypoints.websecure.http.tls=true
       - --providers.docker.exposedbydefault=false
       - --providers.docker.network=traefik
       - --providers.docker=true
     ports:
       - 80:80
+      - 443:443
     volumes:
       - /run/podman/podman.sock:/var/run/docker.sock:ro
 
