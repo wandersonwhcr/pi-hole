@@ -22,6 +22,7 @@ services:
         192.168.0.1 router.home
         192.168.0.2 pi-hole.home
       FTLCONF_dns_cnameRecords: |-
+        dnscrypt-proxy.pi-hole.home,pi-hole.home
         traefik.pi-hole.home,pi-hole.home
     ports:
       - 192.168.0.2:53:53/tcp
@@ -39,6 +40,10 @@ services:
       - SYS_TIME
 
   dnscrypt-proxy:
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.dnscrypt-proxy.rule=Host(`dnscrypt-proxy.pi-hole.home`)
+      - traefik.http.services.dnscrypt-proxy.loadbalancer.server.port=8080
     build:
       context: ./docker-compose/dnscrypt-proxy
     restart: always
