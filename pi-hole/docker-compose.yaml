@@ -1,11 +1,16 @@
 services:
-  pi-hole:
+  pihole:
     labels:
       - traefik.enable=true
-      - traefik.http.routers.pi-hole.rule=Host(`pi-hole.home`)
-      - traefik.http.services.pi-hole.loadbalancer.server.port=80
+      - traefik.http.routers.pihole.rule=Host(`pi-hole.home`)
+      - traefik.http.services.pihole.loadbalancer.server.port=80
     image: pihole/pihole:2025.11.1
     restart: always
     environment:
       TZ: America/Sao_Paulo
       FTLCONF_webserver_api_password: foobar
+    volumes:
+      - pihole:/etc/pihole
+
+volumes:
+  pihole:
