@@ -23,9 +23,9 @@ services:
       - 443:443
     volumes:
       - /run/podman/podman.sock:/var/run/docker.sock:ro
-      - ./tls.yaml:/etc/traefik/tls.yaml
-      - ./key.pem:/etc/ssl/certs/key.pem
-      - ./certificate.pem:/etc/ssl/certs/certificate.pem
+      - ./docker-compose/traefik/tls.yaml:/etc/traefik/tls.yaml
+      - ./docker-compose/traefik/key.pem:/etc/ssl/certs/key.pem
+      - ./docker-compose/traefik/certificate.pem:/etc/ssl/certs/certificate.pem
     networks:
       traefik:
 
