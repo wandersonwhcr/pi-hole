@@ -1,8 +1,0 @@
-services:
-  dhcp-helper:
-    build:
-      context: ./docker-compose/dhcp-helper
-    restart: always
-    network_mode: host
-    cap_add:
-      - NET_ADMIN

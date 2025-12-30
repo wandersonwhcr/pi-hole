@@ -48,4 +48,4 @@ git clone https://github.com/wandersonwhcr/pi-hole
 
 ## TODO
 
-* If dnscrypt-proxy changes IP, pi-hole doesn't change upstream IP
+* DHCP is not working. Use dhcp-helper?
