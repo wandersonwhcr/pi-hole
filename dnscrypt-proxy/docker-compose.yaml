@@ -8,7 +8,7 @@ services:
       - -config
       - /etc/dnscrypt-proxy/dnscrypt-proxy.yaml
     volumes:
-      - dnscrypt-proxy.yaml:/etc/dnscrypt-proxy/dnscrypt-proxy.yaml
+      - ./dnscrypt-proxy.yaml:/etc/dnscrypt-proxy/dnscrypt-proxy.yaml
     networks:
       traefik:
 
