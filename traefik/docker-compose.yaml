@@ -17,11 +17,15 @@ services:
       - --providers.docker.exposedbydefault=false
       - --providers.docker.network=traefik
       - --providers.docker=true
+      - --providers.file.filename=/etc/traefik/tls.yaml
     ports:
       - 80:80
       - 443:443
     volumes:
       - /run/podman/podman.sock:/var/run/docker.sock:ro
+      - ./tls.yaml:/etc/traefik/tls.yaml
+      - ./key.pem:/etc/ssl/certs/key.pem
+      - ./certificate.pem:/etc/ssl/certs/certificate.pem
 
 networks:
   traefik:
