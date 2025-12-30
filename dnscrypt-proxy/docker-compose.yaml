@@ -1,0 +1,18 @@
+services:
+  dnscrypt-proxy:
+    build:
+      context: .
+    entrypoint:
+      - dnscrypt-proxy
+    command:
+      - -config
+      - /etc/dnscrypt-proxy/dnscrypt-proxy.yaml
+    volumes:
+      - dnscrypt-proxy.yaml:/etc/dnscrypt-proxy/dnscrypt-proxy.yaml
+    networks:
+      traefik:
+
+networks:
+  traefik:
+    name: traefik
+    external: true
