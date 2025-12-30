@@ -29,3 +29,5 @@ prefix = ''
 enabled = true
 listen_address = "0.0.0.0:8080"
 enable_query_log = true
+username = ""
+password = ""
