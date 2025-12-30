@@ -23,3 +23,9 @@ cache_file = '/var/cache/dnscrypt-proxy/public-resolvers.md'
 minisign_key = 'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3'
 refresh_delay = 73
 prefix = ''
+
+[monitoring_ui]
+
+enabled = true
+listen_address = "127.0.0.1:8080"
+enable_query_log = true
