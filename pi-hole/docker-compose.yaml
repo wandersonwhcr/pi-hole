@@ -11,7 +11,9 @@ services:
       FTLCONF_webserver_port: "80"
       FTLCONF_webserver_api_password: foobar
       FTLCONF_dns_listeningMode: SINGLE
-      FTLCONF_dns_upstreams: 1.1.1.1 1.0.0.1
+      FTLCONF_dns_upstreams: |-
+        1.1.1.1
+        1.0.0.1
       FTLCONF_dns_hosts: |-
         192.168.0.1 router.home
         192.168.0.2 pi-hole.home
