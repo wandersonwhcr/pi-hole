@@ -45,3 +45,7 @@ rc-service podman start
 
 git clone https://github.com/wandersonwhcr/pi-hole
 ```
+
+## TODO
+
+* If dnscrypt-proxy changes IP, pi-hole doesn't change upstream IP
