@@ -16,6 +16,13 @@ services:
       - pihole:/etc/pihole
     networks:
       traefik:
+    cap_add:
+      - CHOWN
+      - NET_BIND_SERVICE
+      - NET_RAW
+      - NET_ADMIN
+      - SYS_NICE
+      - SYS_TIME
 
 volumes:
   pihole:
