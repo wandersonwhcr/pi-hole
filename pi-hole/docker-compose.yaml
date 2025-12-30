@@ -8,7 +8,14 @@ services:
     restart: always
     environment:
       TZ: America/Sao_Paulo
+      FTLCONF_webserver_port: "80"
       FTLCONF_webserver_api_password: foobar
+      FTLCONF_dns_upstreams: 1.1.1.1 1.0.0.1
+      FTLCONF_dns_hosts: |-
+        192.168.0.1 router.home
+        192.168.0.2 pi-hole.home
+      FTLCONF_dns_cnameRecords: |-
+        traefik.pi-hole.home,pi-hole.home
     ports:
       - 192.168.0.2:53:53/tcp
       - 192.168.0.2:53:53/udp
