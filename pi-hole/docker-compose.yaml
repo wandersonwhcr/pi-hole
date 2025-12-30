@@ -44,8 +44,6 @@ services:
     restart: always
     volumes:
       - ./docker/dnscrypt-proxy/dnscrypt-proxy.toml:/etc/dnscrypt-proxy/dnscrypt-proxy.toml
-    networks:
-      traefik:
     network_mode: service:pi-hole
 
 volumes:
