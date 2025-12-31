@@ -1,0 +1,12 @@
+http:
+  routers:
+    dashboard:
+      rule: Host(`traefik.pi-hole.home`)
+      service: api@internal
+
+tls:
+  stores:
+    default:
+      defaultCertificate:
+        keyFile: /etc/ssl/certs/key.pem
+        certFile: /etc/ssl/certs/certificate.pem

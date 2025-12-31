@@ -1,15 +1,17 @@
 services:
 
   pihole:
+    container_name: "${COMPOSE_PROJECT_NAME}_pihole"
     labels:
       - traefik.enable=true
       - traefik.http.routers.pihole.rule=Host(`pi-hole.home`)
-      - traefik.http.services.pihole.loadbalancer.server.port=80
+      - traefik.http.services.pihole.loadbalancer.server.url=http://127.0.0.1:8080
     image: pihole/pihole:2025.11.1
     restart: always
     environment:
       TZ: America/Sao_Paulo
-      FTLCONF_webserver_port: "80"
+      FTLCONF_webserver_domain: pi-hole.home
+      FTLCONF_webserver_port: 127.0.0.1:8080
       FTLCONF_webserver_api_password: foobar
       FTLCONF_dns_listeningMode: SINGLE
       FTLCONF_dns_domain_name: home
@@ -30,13 +32,9 @@ services:
       FTLCONF_dhcp_router: 192.168.0.1
       FTLCONF_dhcp_netmask: 255.255.255.0
       FTLCONF_dhcp_leaseTime: 1h
-    ports:
-      - 192.168.0.2:53:53/tcp
-      - 192.168.0.2:53:53/udp
     volumes:
       - pihole:/etc/pihole
-    networks:
-      traefik:
+    network_mode: host
     cap_add:
       - CHOWN
       - NET_BIND_SERVICE
@@ -46,21 +44,17 @@ services:
       - SYS_TIME
 
   dnscrypt-proxy:
+    container_name: "${COMPOSE_PROJECT_NAME}_dnscrypt-proxy"
     labels:
       - traefik.enable=true
       - traefik.http.routers.dnscrypt-proxy.rule=Host(`dnscrypt-proxy.pi-hole.home`)
-      - traefik.http.services.dnscrypt-proxy.loadbalancer.server.port=8080
+      - traefik.http.services.dnscrypt-proxy.loadbalancer.server.url=http://127.0.0.1:8081
     build:
       context: ./docker-compose/dnscrypt-proxy
     restart: always
     volumes:
       - ./docker/dnscrypt-proxy/dnscrypt-proxy.toml:/etc/dnscrypt-proxy/dnscrypt-proxy.toml
-    network_mode: service:pihole
+    network_mode: host
 
 volumes:
   pihole:
-
-networks:
-  traefik:
-    name: traefik
-    external: true

@@ -1,34 +1,22 @@
 services:
   traefik:
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.traefik.rule=Host(`traefik.pi-hole.home`)
-      - traefik.http.services.traefik.loadbalancer.server.port=8080
+    container_name: ${COMPOSE_PROJECT_NAME}_traefik
     image: traefik:v3.6.5
     restart: always
     command:
-      - --api.insecure=true
-      - --log.level=INFO
+      - --api=true
+      - --log.level=ERROR
       - --entrypoints.web.address=:80
-      - --entrypoints.web.http.redirections.entryPoint.to=websecure
-      - --entrypoints.web.http.redirections.entryPoint.scheme=https
+      - --entrypoints.web.http.redirections.entrypoint.to=websecure
+      - --entrypoints.web.http.redirections.entrypoint.scheme=https
       - --entrypoints.websecure.address=:443
       - --entrypoints.websecure.http.tls=true
+      - --entrypoints.websecure.asdefault=true
       - --providers.docker.exposedbydefault=false
-      - --providers.docker.network=traefik
       - --providers.docker=true
-      - --providers.file.filename=/etc/traefik/tls.yaml
-    ports:
-      - 80:80
-      - 443:443
+      - --providers.file.directory=/etc/traefik/providers
     volumes:
       - /run/podman/podman.sock:/var/run/docker.sock:ro
-      - ./docker-compose/traefik/tls.yaml:/etc/traefik/tls.yaml
-      - ./docker-compose/traefik/key.pem:/etc/ssl/certs/key.pem
-      - ./docker-compose/traefik/certificate.pem:/etc/ssl/certs/certificate.pem
-    networks:
-      traefik:
-
-networks:
-  traefik:
-    name: traefik
+      - ./docker-compose/traefik/providers:/etc/traefik/providers:ro
+      - ./docker-compose/traefik/certs:/etc/ssl/certs:ro
+    network_mode: host
